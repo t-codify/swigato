@@ -13,13 +13,13 @@ const RestaurantCard = (data) => {
   }
 
   return (
-    <div className="res-card">
-      <img className="res-logo" src={IMG_URL + cloudinaryImageId}></img>
-      <h3>{name}</h3>
-      <h5>{cuisines.join(", ")}</h5>
-      <h5>{avgRating}stars</h5>
-      <h5>{costForTwo}</h5>
-      <h5>{deliveryTime} min</h5>
+    <div className="m-2 p-4 w-[250px] bg-orange-100 rounded-r-lg hover:bg-orange-200">
+      <img className="rounded-lg " src={IMG_URL + cloudinaryImageId}></img>
+      <h3 className="font-bold py-2">{name}</h3>
+      <h4 className="text-sm">{cuisines.join(", ")}</h4>
+      <h4 className="text-sm">{avgRating} stars</h4>
+      <h4 className="text-sm">{costForTwo}</h4>
+      <h4 className="text-sm">{data.resInfo.sla.deliveryTime} min</h4>
     </div>
   );
 };

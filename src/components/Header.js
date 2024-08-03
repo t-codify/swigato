@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../util/constants";
 import { useState, useEffect } from "react";
-import useOnlineStatus from "../util/useOnlineStatus";
+import useOnlineStatus from "../util/customHooks/useOnlineStatus";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   //const onlineStatus, setOnlineStatus] = useState(false);
@@ -11,6 +12,10 @@ const Header = () => {
   useEffect(() => {
     console.log("use Effect called");
   }, [btnName]);
+
+  const cartItems = useSelector((store) => {
+    return store.cart.items;
+  });
   return (
     <div className="flex justify-between bg-orange-100 shadow-lg">
       <div>
@@ -30,7 +35,9 @@ const Header = () => {
           <li className="px-2 my-2">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="px-2 my-2">Cart</li>
+          <li className="px-2 my-2 font-bold">
+            <Link to="/Cart">Cart ({cartItems.length})</Link>
+          </li>
           <li className="px-2 ">
             <button
               type="button"

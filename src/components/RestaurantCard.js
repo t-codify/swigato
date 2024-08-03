@@ -11,7 +11,6 @@ const RestaurantCard = (data) => {
       deliveryTime,
     } = data.resInfo);
   }
-
   return (
     <div className="m-2 p-4 w-[250px] bg-orange-100 rounded-r-lg hover:bg-orange-200">
       <img className="rounded-lg " src={IMG_URL + cloudinaryImageId}></img>
@@ -22,6 +21,19 @@ const RestaurantCard = (data) => {
       <h4 className="text-sm">{data.resInfo.sla.deliveryTime} min</h4>
     </div>
   );
+};
+
+export const promotedRestaurantCard = (RestaurantCard) => {
+  return (data) => {
+    return (
+      <div>
+        <div className="absolute bg-orange-400 text-white m-2 p-2 rounded-lg">
+          <span className="text-sm">Promoted</span>
+        </div>
+        <RestaurantCard {...data} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
